@@ -54,24 +54,23 @@ extension Sequence where Iterator.Element == Byte {
         of a hex value into an `Int`.
     */
     public var hexInt: Int? {
-        fatalError()
-//        var int: Int = 0
-//
-//        for byte in self {
-//            int = int * 16
-//
-//            if byte >= .zero && byte <= .nine {
-//                int += Int(byte - .zero)
-//            } else if byte >= .A && byte <= .F {
-//                int += Int(byte - .A) + 10
-//            } else if byte >= .a && byte <= .f {
-//                int += Int(byte - .a) + 10
-//            } else {
-//                return nil
-//            }
-//        }
-//
-//        return int
+        var int: Int = 0
+
+        for byte in self {
+            int = int * 16
+
+            if byte >= .zero && byte <= .nine {
+                int += Int(byte - .zero)
+            } else if byte >= .A && byte <= .F {
+                int += Int(byte - .A) + 10
+            } else if byte >= .a && byte <= .f {
+                int += Int(byte - .a) + 10
+            } else {
+                return nil
+            }
+        }
+
+        return int
     }
 
     /**
@@ -79,20 +78,19 @@ extension Sequence where Iterator.Element == Byte {
         of a decimal value into an `Int`.
     */
     public var decimalInt: Int? {
-        fatalError()
-//        var int: Int = 0
-//
-//        for byte in self {
-//            int = int * 10
-//
-//            if byte >= .zero && byte <= .nine {
-//                int += Int(byte - .zero)
-//            } else {
-//                return nil
-//            }
-//        }
-//
-//        return int
+        var int: Int = 0
+
+        for byte in self {
+            int = int * 10
+
+            if byte >= .zero && byte <= .nine {
+                int += Int(byte - .zero)
+            } else {
+                return nil
+            }
+        }
+
+        return int
     }
 
     /**
