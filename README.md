@@ -1,4 +1,4 @@
-# Core
+# Bits
 
 ![Swift](http://img.shields.io/badge/swift-3.0-brightgreen.svg)
 [![Build Status](https://travis-ci.org/vapor/core.svg?branch=master)](https://travis-ci.org/vapor/bits)
