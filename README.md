@@ -1,9 +1,9 @@
 # Bits
 
 ![Swift](http://img.shields.io/badge/swift-3.0-brightgreen.svg)
-[![Build Status](https://travis-ci.org/vapor/core.svg?branch=master)](https://travis-ci.org/vapor/bits)
-[![CircleCI](https://circleci.com/gh/vapor/core.svg?style=shield)](https://circleci.com/gh/vapor/bits)
-[![Code Coverage](https://codecov.io/gh/vapor/core/branch/master/graph/badge.svg)](https://codecov.io/gh/vapor/bits)
+[![Build Status](https://travis-ci.org/vapor/bits.svg?branch=master)](https://travis-ci.org/vapor/bits)
+[![CircleCI](https://circleci.com/gh/vapor/bits.svg?style=shield)](https://circleci.com/gh/vapor/bits)
+[![Code Coverage](https://codecov.io/gh/vapor/bits/branch/master/graph/badge.svg)](https://codecov.io/gh/vapor/bits)
 [![Codebeat](https://codebeat.co/badges/a793ad97-47e3-40d9-82cf-2aafc516ef4e)](https://codebeat.co/projects/github-com-vapor-bits)
 [![Slack Status](http://vapor.team/badge.svg)](http://vapor.team)
 
