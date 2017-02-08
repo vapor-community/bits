@@ -12,7 +12,7 @@ extension Byte {
     */
     public static func randomByte() -> Byte {
         #if os(Linux)
-            let val = Byte(libc.random() % Int(max32))
+            let val = Byte(Glibc.random() % Int(max32))
         #else
             let val = Byte(arc4random_uniform(max32))
         #endif
