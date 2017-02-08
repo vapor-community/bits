@@ -2,6 +2,12 @@ import XCTest
 @testable import Bytes
 
 class PatternMatchingTests: XCTestCase {
+    static let allTests = [
+        ("testByteValue", testByteValue),
+        ("testBytesSliceValue", testBytesSliceValue),
+        ("testBytesValue", testBytesValue),
+    ]
+
     func testByteValue() {
         let value = Byte(8)
 

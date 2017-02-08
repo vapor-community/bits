@@ -3,8 +3,7 @@ import XCTest
 @testable import Bytes
 
 class ByteTests: XCTestCase {
-
-    static var allTests = [
+    static let allTests = [
         ("testRandom", testRandom),
         ("testIsCases", testIsCases),
         ("testPatternMatching", testPatternMatching),

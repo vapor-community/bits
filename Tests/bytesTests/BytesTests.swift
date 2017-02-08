@@ -12,6 +12,8 @@ class BytesTests: XCTestCase {
         ("testHexInt", testHexInt),
         ("testDecimalInt", testDecimalInt),
         ("testDecimalIntError", testDecimalIntError),
+        ("testStringConvertible", testStringConvertible),
+        ("testDataConvertible", testDataConvertible),
     ]
 
     func testStringError() {
@@ -62,6 +64,9 @@ class BytesTests: XCTestCase {
         bytes += 0x42
 
         XCTAssertEqual(bytes, [0x00, 0x42])
+
+        bytes += BytesSlice(arrayLiteral: 0x55, 0x6F)
+        XCTAssertEqual(bytes, [0x00, 0x42, 0x55, 0x6F])
     }
 
     func testHexInt() {

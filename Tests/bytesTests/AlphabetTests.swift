@@ -5,6 +5,8 @@ class AlphabetTests: XCTestCase {
     static let allTests = [
         ("testLowercaseAlphabet", testLowercaseAlphabet),
         ("testUppercaseAlphabet", testUppercaseAlphabet),
+        ("testBytesUppercasing", testBytesUppercasing),
+        ("testBytesLowercasing", testBytesLowercasing),
     ]
 
     func testLowercaseAlphabet() {
