@@ -8,7 +8,6 @@ class BytesTests: XCTestCase {
         ("testStringError", testStringError),
         ("testPatternMatch", testPatternMatch),
         ("testPatternArrayMatch", testPatternArrayMatch),
-        ("testBytesSlice", testBytesSlice),
         ("testBytesSlicePatternMatching", testBytesSlicePatternMatching),
         ("testEasyAppend", testEasyAppend),
         ("testIntHex", testIntHex),
@@ -44,11 +43,6 @@ class BytesTests: XCTestCase {
         }
     }
 
-    func testBytesSlice() {
-        let slice = "hello".bytesSlice
-        XCTAssertEqual(slice, ArraySlice("hello".bytes))
-    }
-
     func testBytesSlicePatternMatching() {
         let arr: Bytes = [1, 2, 3]
         switch arr[0...1] {
@@ -80,17 +74,17 @@ class BytesTests: XCTestCase {
     }
 
     func testHexInt() {
-        XCTAssertEqual("aBf89".bytes.hexInt, 704393)
+        XCTAssertEqual("aBf89".makeBytes().hexInt, 704393)
     }
 
     func testDecimalInt() {
         let test = "1337"
-        XCTAssertEqual(test.bytes.decimalInt, 1337)
+        XCTAssertEqual(test.makeBytes().decimalInt, 1337)
     }
 
     func testDecimalIntError() {
         let test = "13ferret37"
-        XCTAssertEqual(test.bytes.decimalInt, nil)
+        XCTAssertEqual(test.makeBytes().decimalInt, nil)
     }
 
     func testTrim() {
@@ -110,13 +104,13 @@ class BytesTests: XCTestCase {
 
     func testStringConvertible() throws {
         let bytes: Bytes = [0x64, 0x65]
-        let string = try String(bytes: bytes)
-        XCTAssertEqual(try string.makeBytes(), bytes)
+        let string = String(bytes: bytes)
+        XCTAssertEqual(string.makeBytes(), bytes)
     }
 
     func testDataConvertible() throws {
         let bytes: Bytes = [0x64, 0x65]
         let data = Data(bytes: bytes)
-        XCTAssertEqual(try data.makeBytes(), bytes)
+        XCTAssertEqual(data.makeBytes(), bytes)
     }
 }

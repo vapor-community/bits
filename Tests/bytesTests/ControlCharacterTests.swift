@@ -66,6 +66,7 @@ class ControlCharacterTests: XCTestCase {
 
     func testCRLF() {
         let input: Bytes = Byte.crlf
+        XCTAssertEqual(input, "\r\n".makeBytes())
     }
 }
 

@@ -28,4 +28,16 @@ class AlphabetTests: XCTestCase {
 
         XCTAssertEqual(alphabet, expectation)
     }
+
+    func testBytesUppercasing() {
+        let hello = "Hello, World!".makeBytes().uppercased.string
+        let expectation = "HELLO, WORLD!"
+        XCTAssertEqual(hello, expectation)
+    }
+
+    func testBytesLowercasing() {
+        let hello = "HELLO, WORLD!".makeBytes().lowercased.string
+        let expectation = "hello, world!"
+        XCTAssertEqual(hello, expectation)
+    }
 }

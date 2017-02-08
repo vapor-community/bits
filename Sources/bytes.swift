@@ -4,30 +4,6 @@ extension Int {
     }
 }
 
-extension String {
-    public var bytes: Bytes {
-        return Bytes(utf8)
-    }
-}
-
-extension String {
-    public var bytesSlice: BytesSlice {
-        return BytesSlice(utf8)
-    }
-}
-
-public func +=(lhs: inout Bytes, rhs: Byte) {
-    lhs.append(rhs)
-}
-
-public func ~=(pattern: Bytes, value: Bytes) -> Bool {
-    return pattern == value
-}
-
-public func ~=(pattern: Bytes, value: Byte) -> Bool {
-    return pattern.contains(value)
-}
-
 extension Sequence where Iterator.Element == Byte {
     /**
         Converts a slice of bytes to
@@ -82,8 +58,7 @@ extension Sequence where Iterator.Element == Byte {
 
         for byte in self {
             int = int * 10
-
-            if byte >= .zero && byte <= .nine {
+            if byte.isDigit {
                 int += Int(byte - .zero)
             } else {
                 return nil

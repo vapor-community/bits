@@ -89,79 +89,14 @@ extension Byte {
     public static let tilda: Byte = 0x7E
 }
 
-// MARK: UTF8 Numbers
-
-extension Byte {
-
-    /// 0 in utf8
-    public static let zero: Byte = 0x30
-
-    /// 1 in utf8
-    public static let one: Byte = 0x31
-
-    /// 2 in utf8
-    public static let two: Byte = 0x32
-
-    /// 3 in utf8
-    public static let three: Byte = 0x33
-
-    /// 4 in utf8
-    public static let four: Byte = 0x34
-
-    /// 5 in utf8
-    public static let five: Byte = 0x35
-
-    /// 6 in utf8
-    public static let six: Byte = 0x36
-
-    /// 7 in utf8
-    public static let seven: Byte = 0x37
-
-    /// 8 in utf8
-    public static let eight: Byte = 0x38
-
-    /// 9 in utf8
-    public static let nine: Byte = 0x39
-}
-
-// MARK: UTF8 Convenience
-
 extension Byte {
     /**
-        Defines the `crlf` used to denote
-        line breaks in HTTP.
+         Defines the `crlf` used to denote
+         line breaks in HTTP and many other
+         formatters
     */
     public static let crlf: Bytes = [
         .carriageReturn,
         .newLine
     ]
-}
-
-extension Byte {
-    public var isWhitespace: Bool {
-        return self == .space || self == .newLine || self == .carriageReturn || self == .horizontalTab
-    }
-
-    public var isLetter: Bool {
-        return (.a ... .z).contains(self) || (.A ... .Z).contains(self)
-    }
-
-    public var isDigit: Bool {
-        return (.zero ... .nine).contains(self)
-    }
-
-    public var isAlphanumeric: Bool {
-        return isLetter || isDigit
-    }
-
-    public var isHexDigit: Bool {
-        return (.zero ... .nine).contains(self) || (.A ... .F).contains(self) || (.a ... .f).contains(self)
-    }
-}
-
-
-// MARK: Byte Pattern Matching
-
-public func ~=(pattern: Byte, value: Byte) -> Bool {
-    return pattern == value
 }
