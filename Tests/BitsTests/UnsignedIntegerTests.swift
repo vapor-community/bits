@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-@testable import Bytes
+@testable import Bits
 
 class UnsignedIntegerTests: XCTestCase {
     static let allTests = [

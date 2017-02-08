@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-@testable import Bytes
+@testable import Bits
 
 class BytesTests: XCTestCase {
     static var allTests = [

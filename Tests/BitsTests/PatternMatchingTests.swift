@@ -1,5 +1,5 @@
 import XCTest
-@testable import Bytes
+@testable import Bits
 
 class PatternMatchingTests: XCTestCase {
     static let allTests = [
