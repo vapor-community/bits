@@ -1,5 +1,5 @@
 import XCTest
-@testable import bytesTests
+@testable import BitsTests
 
 XCTMain([
     testCase(ControlCharacterTests.allTests),
