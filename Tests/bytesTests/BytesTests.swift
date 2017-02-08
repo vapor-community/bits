@@ -3,20 +3,15 @@ import XCTest
 @testable import Bytes
 
 class BytesTests: XCTestCase {
-
     static var allTests = [
         ("testStringError", testStringError),
         ("testPatternMatch", testPatternMatch),
         ("testPatternArrayMatch", testPatternArrayMatch),
         ("testBytesSlicePatternMatching", testBytesSlicePatternMatching),
         ("testEasyAppend", testEasyAppend),
-        ("testIntHex", testIntHex),
         ("testHexInt", testHexInt),
         ("testDecimalInt", testDecimalInt),
         ("testDecimalIntError", testDecimalIntError),
-        ("testTrim", testTrim),
-        ("testTrimEmpty", testTrimEmpty),
-        ("testTrimAll", testTrimAll)
     ]
 
     func testStringError() {
@@ -27,7 +22,7 @@ class BytesTests: XCTestCase {
 
     func testPatternMatch() {
         switch [Byte.a] {
-        case [Byte.a]:
+        case [.a]:
             break
         default:
             XCTFail("Pattern match failed.")
@@ -69,10 +64,6 @@ class BytesTests: XCTestCase {
         XCTAssertEqual(bytes, [0x00, 0x42])
     }
 
-    func testIntHex() {
-        XCTAssertEqual(255.hex, "FF")
-    }
-
     func testHexInt() {
         XCTAssertEqual("aBf89".makeBytes().hexInt, 704393)
     }
@@ -85,21 +76,6 @@ class BytesTests: XCTestCase {
     func testDecimalIntError() {
         let test = "13ferret37"
         XCTAssertEqual(test.makeBytes().decimalInt, nil)
-    }
-
-    func testTrim() {
-        let result = Array("==hello==".characters).trimmed(["="])
-        XCTAssertEqual(String(result), "hello")
-    }
-
-    func testTrimEmpty() {
-        let result = Array("".characters).trimmed([])
-        XCTAssertEqual(String(result), "")
-    }
-
-    func testTrimAll() {
-        let result = Array("~~".characters).trimmed(["~"])
-        XCTAssertEqual(String(result), "")
     }
 
     func testStringConvertible() throws {

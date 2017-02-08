@@ -7,6 +7,9 @@
 extension Byte {
     private static let max32 = UInt32(Byte.max)
 
+    /**
+        Create a single random byte
+    */
     public static func randomByte() -> Byte {
         #if os(Linux)
             let val = Byte(libc.random() % Int(max32))
@@ -18,6 +21,10 @@ extension Byte {
 }
 
 extension UnsignedInteger {
+    /**
+        Return a random value for the given type. 
+        This should NOT be considered cryptographically secure.
+    */
     public static func random() -> Self {
         let size = MemoryLayout<Self>.size
         var bytes: [Byte] = []

@@ -12,8 +12,8 @@ class ByteTests: XCTestCase {
     ]
 
     func testRandom() {
-        var one: Bytes = []
-        var two: Bytes = []
+        var one: [Byte] = []
+        var two: [Byte] = []
 
         for _ in 0..<20 {
             one.append(Byte.random())

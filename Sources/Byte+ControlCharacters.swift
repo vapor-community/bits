@@ -1,5 +1,3 @@
-// MARK: UTF8 Control Characters
-
 extension Byte {
     /// '\t'
     public static let horizontalTab: Byte = 0x9
