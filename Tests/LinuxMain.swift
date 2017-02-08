@@ -1,6 +1,11 @@
 import XCTest
-@testable import bytesTests
+@testable import BitsTests
 
 XCTMain([
-     testCase(bytesTests.allTests),
+    testCase(ControlCharacterTests.allTests),
+    testCase(BytesTests.allTests),
+    testCase(ByteTests.allTests),
+    testCase(AlphabetTests.allTests),
+    testCase(PatternMatchingTests.allTests),
+    testCase(UnsignedIntegerTests.allTests),
 ])
