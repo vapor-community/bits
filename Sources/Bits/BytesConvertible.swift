@@ -16,3 +16,10 @@ public protocol BytesInitializable {
     Used for objects that can be initialized with, and represented by, Bytes
 */
 public protocol BytesConvertible: BytesRepresentable, BytesInitializable { }
+
+extension BytesInitializable {
+    public init(bytes: BytesConvertible) throws {
+        let bytes = try bytes.makeBytes()
+        try self.init(bytes: bytes)
+    }
+}
