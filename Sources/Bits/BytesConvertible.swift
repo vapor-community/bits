@@ -18,7 +18,7 @@ public protocol BytesInitializable {
 public protocol BytesConvertible: BytesRepresentable, BytesInitializable { }
 
 extension BytesInitializable {
-    public init(bytes: BytesConvertible) throws {
+    public init(bytes: BytesRepresentable) throws {
         let bytes = try bytes.makeBytes()
         try self.init(bytes: bytes)
     }
