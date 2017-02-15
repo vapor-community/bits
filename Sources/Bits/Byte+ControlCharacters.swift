@@ -85,6 +85,12 @@ extension Byte {
 
     /// ~
     public static let tilda: Byte = 0x7E
+
+    /// {
+    public static let leftCurlyBracket: Byte = 0x7B
+
+    /// }
+    public static let rightCurlyBracket: Byte = 0x7D
 }
 
 extension Byte {

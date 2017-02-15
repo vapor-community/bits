@@ -13,7 +13,7 @@ extension UnsignedInteger {
     */
     public init(bytes: Bytes) {
         // 8 bytes in UInt64, etc. clips overflow
-        let prefix = bytes.prefix(MemoryLayout<Self>.size)
+        let prefix = bytes.suffix(MemoryLayout<Self>.size)
         var value: UIntMax = 0
         prefix.forEach { byte in
             value <<= 8 // 1 byte is 8 bits
