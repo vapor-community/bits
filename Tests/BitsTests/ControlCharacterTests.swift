@@ -37,10 +37,12 @@ class ControlCharacterTests: XCTestCase {
             .leftSquareBracket,
             .rightSquareBracket,
             .underscore,
-            .tilda
+            .tilda,
+            .leftCurlyBracket,
+            .rightCurlyBracket,
         ]
 
-        let string = "\t\n\r !\"#$%&()*+,-./\\:;=?@[]_~"
+        let string = "\t\n\r !\"#$%&()*+,-./\\:;=?@[]_~{}"
         let expectation = Bytes(string.utf8)
 
         XCTAssertEqual(input, expectation)
