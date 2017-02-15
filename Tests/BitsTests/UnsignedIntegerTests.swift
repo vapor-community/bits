@@ -34,4 +34,26 @@ class UnsignedIntegerTests: XCTestCase {
         let bytes = value.makeBytes()
         XCTAssertEqual(bytes, [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff])
     }
+
+    func testConversionsConsistent() {
+        let int32BytesExpectation = [0x00, 0x00, 0xFF, 0x64] as Bytes
+        let int32 = UInt32(bytes: int32BytesExpectation)
+        let int32Expectation = UInt32(0x00_00_FF_64)
+        XCTAssertEqual(int32, int32Expectation)
+
+        let int32Bytes = int32.makeBytes()
+        XCTAssertEqual(int32Bytes, int32BytesExpectation)
+
+        let int16 = UInt16(int32)
+        let int16Expectation = UInt16(0xFF_64)
+        XCTAssertEqual(int16, int16Expectation)
+
+        let int16BytesExpectation = [0xFF, 0x64] as Bytes
+        let int16Bytes = int16.makeBytes()
+        XCTAssertEqual(int16Bytes, int16BytesExpectation)
+
+        let int16System = UInt16(int32)
+        let int16FromOverflow = UInt16(bytes: int32Bytes)
+        XCTAssertEqual(int16FromOverflow, int16System)
+    }
 }
