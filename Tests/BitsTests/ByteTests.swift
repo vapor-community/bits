@@ -8,6 +8,7 @@ class ByteTests: XCTestCase {
         ("testIsCases", testIsCases),
         ("testPatternMatching", testPatternMatching),
         ("testBase64", testBase64),
+        ("testBase64URL", testBase64URL),
     ]
 
     func testRandom() {
@@ -62,9 +63,86 @@ class ByteTests: XCTestCase {
     }
 
     public func testBase64() {
-        XCTAssertEqual("dmFwb3I=".makeBytes().base64Decoded.string, "vapor")
-        XCTAssertEqual("⚠️".makeBytes().base64Decoded.string, "")
-        XCTAssertEqual("hello".makeBytes().base64Encoded.string, "aGVsbG8=")
-        XCTAssertEqual("hello".makeBytes().base64Encoded, "aGVsbG8=".makeBytes())
+        XCTAssertEqual(
+            "dmFwb3I="
+                .makeBytes()
+                .base64Decoded
+                .string,
+            "vapor"
+        )
+        XCTAssertEqual(
+            "⚠️"
+                .makeBytes()
+                .base64Decoded
+                .string,
+            ""
+        )
+        XCTAssertEqual(
+            "hello"
+                .makeBytes()
+                .base64Encoded
+                .string,
+            "aGVsbG8="
+        )
+    }
+
+    public func testBase64URL() {
+        XCTAssertEqual(
+            "dmFwb3I="
+                .makeBytes()
+                .base64URLDecoded
+                .string,
+            "vapor"
+        )
+        XCTAssertEqual(
+            "⚠️"
+                .makeBytes()
+                .base64URLDecoded
+                .string,
+            ""
+        )
+        XCTAssertEqual(
+            "hello"
+                .makeBytes()
+                .base64URLEncoded
+                .string,
+            "aGVsbG8"
+        )
+        XCTAssertEqual(
+            "+/+/"
+                .makeBytes()
+                .base64Decoded
+                .base64URLEncoded
+                .string,
+            "-_-_"
+        )
+    }
+
+    public func testHexEncode() {
+        XCTAssertEqual(
+            "vapor"
+                .makeBytes()
+                .hexEncoded
+                .string,
+            "7661706f72"
+        )
+        XCTAssertEqual(
+            "vapor"
+                .makeBytes()
+                .hexEncoded
+                .hexDecoded
+                .string,
+            "vapor"
+        )
+    }
+
+    public func testHexCustom() {
+        let encoder = HexEncoder(ignoreUndecodableCharacters: false)
+        XCTAssertEqual(
+            encoder.decode(
+                "61616X6161".makeBytes()
+            ).string,
+            "aa"
+        )
     }
 }
