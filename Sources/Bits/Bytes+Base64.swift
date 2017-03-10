@@ -2,19 +2,24 @@ import Foundation
 
 extension Sequence where Iterator.Element == Byte {
     public var base64Encoded: Bytes {
-        let bytes = [Byte](self)
-        let data = Data(bytes: bytes)
-
-        let encodedData = data.base64EncodedData()
-        return encodedData.makeBytes()
+        let bytes = Array(self)
+        return Base64Encoder.shared.encode(bytes)
     }
 
     public var base64Decoded: Bytes {
-        let bytes = [Byte](self)
-        let dataBase64 = Data(bytes: bytes)
-        guard let dataDecoded = Data(base64Encoded: dataBase64, options: .ignoreUnknownCharacters) else {
-            return []
-        }
-        return dataDecoded.makeBytes()
+        let bytes = Array(self)
+        return Base64Encoder.shared.decode(bytes)
+    }
+}
+
+extension Sequence where Iterator.Element == Byte {
+    public var base64URLEncoded: Bytes {
+        let bytes = Array(self)
+        return Base64Encoder.url.encode(bytes)
+    }
+
+    public var base64URLDecoded: Bytes {
+        let bytes = Array(self)
+        return Base64Encoder.url.decode(bytes)
     }
 }
