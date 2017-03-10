@@ -32,13 +32,13 @@ class AlphabetTests: XCTestCase {
     }
 
     func testBytesUppercasing() {
-        let hello = "Hello, World!".makeBytes().uppercased.string
+        let hello = "Hello, World!".makeBytes().uppercased.makeString()
         let expectation = "HELLO, WORLD!"
         XCTAssertEqual(hello, expectation)
     }
 
     func testBytesLowercasing() {
-        let hello = "HELLO, WORLD!".makeBytes().lowercased.string
+        let hello = "HELLO, WORLD!".makeBytes().lowercased.makeString()
         let expectation = "hello, world!"
         XCTAssertEqual(hello, expectation)
     }

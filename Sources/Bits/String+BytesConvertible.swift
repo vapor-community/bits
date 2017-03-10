@@ -10,6 +10,6 @@ extension String: BytesConvertible {
          Initializes a string with a UTF8 byte array
     */
     public init(bytes: Bytes) {
-        self = bytes.string
+        self = bytes.makeString()
     }
 }
