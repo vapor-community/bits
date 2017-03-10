@@ -3,12 +3,12 @@ import Foundation
 extension Sequence where Iterator.Element == Byte {
     public var base64Encoded: Bytes {
         let bytes = Array(self)
-        return Base64Encoder.regular.encode(bytes)
+        return Base64Encoder.shared.encode(bytes)
     }
 
     public var base64Decoded: Bytes {
         let bytes = Array(self)
-        return Base64Encoder.regular.decode(bytes)
+        return Base64Encoder.shared.decode(bytes)
     }
 }
 

@@ -85,7 +85,7 @@ public final class HexEncoder {
             }
 
             // combine the two 4-bit numbers back
-            // into the original byte shifting
+            // into the original byte, shifting
             // the first back up to its 8-bit position
             //
             // 0x00001234 << 4 | 0x00005678 
