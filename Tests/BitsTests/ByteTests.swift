@@ -84,6 +84,14 @@ class ByteTests: XCTestCase {
                 .string,
             "aGVsbG8="
         )
+
+        XCTAssert(
+            "eyJleHAiOjE0ODkxNTA1NjIuMjgyODMsInVzZXIiOnsiaWQiOiI3MUUxQjUzQy1BMDZBLTRFMzUtQTBDQy0yQ0UzMUEzQkQ5MDciLCJuYW1lIjoiSm9uYXMgU2Nod2FydHoifX0="
+                .makeBytes()
+                .base64Decoded
+                .last
+            != Byte.max
+        )
     }
 
     public func testBase64URL() {

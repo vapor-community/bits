@@ -183,7 +183,6 @@ public final class Base64Encoder {
 
             c3 = decode(s[off])
             off += 1
-
             if c3 == Byte.max {
                 break
             }
@@ -198,6 +197,9 @@ public final class Base64Encoder {
 
             c4 = decode(s[off])
             off += 1
+            if c4 == Byte.max {
+                break
+            }
             o = (c3 & 0x03) << 6
             o |= c4
             result[olen] = o
