@@ -19,7 +19,7 @@ class BytesTests: XCTestCase {
     func testStringError() {
         // ✨ = [226, 156, 168]
         let bytes: Bytes = [226, 156]
-        XCTAssertEqual(bytes.string, "")
+        XCTAssertEqual(bytes.makeString(), "")
     }
 
     func testPatternMatch() {

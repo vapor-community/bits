@@ -67,21 +67,21 @@ class ByteTests: XCTestCase {
             "dmFwb3I="
                 .makeBytes()
                 .base64Decoded
-                .string,
+                .makeString(),
             "vapor"
         )
         XCTAssertEqual(
             "⚠️"
                 .makeBytes()
                 .base64Decoded
-                .string,
+                .makeString(),
             ""
         )
         XCTAssertEqual(
             "hello"
                 .makeBytes()
                 .base64Encoded
-                .string,
+                .makeString(),
             "aGVsbG8="
         )
 
@@ -99,21 +99,21 @@ class ByteTests: XCTestCase {
             "dmFwb3I="
                 .makeBytes()
                 .base64URLDecoded
-                .string,
+                .makeString(),
             "vapor"
         )
         XCTAssertEqual(
             "⚠️"
                 .makeBytes()
                 .base64URLDecoded
-                .string,
+                .makeString(),
             ""
         )
         XCTAssertEqual(
             "hello"
                 .makeBytes()
                 .base64URLEncoded
-                .string,
+                .makeString(),
             "aGVsbG8"
         )
         XCTAssertEqual(
@@ -121,7 +121,7 @@ class ByteTests: XCTestCase {
                 .makeBytes()
                 .base64Decoded
                 .base64URLEncoded
-                .string,
+                .makeString(),
             "-_-_"
         )
     }
@@ -131,7 +131,7 @@ class ByteTests: XCTestCase {
             "vapor"
                 .makeBytes()
                 .hexEncoded
-                .string,
+                .makeString(),
             "7661706f72"
         )
         XCTAssertEqual(
@@ -139,7 +139,7 @@ class ByteTests: XCTestCase {
                 .makeBytes()
                 .hexEncoded
                 .hexDecoded
-                .string,
+                .makeString(),
             "vapor"
         )
     }
@@ -149,7 +149,7 @@ class ByteTests: XCTestCase {
         XCTAssertEqual(
             encoder.decode(
                 "61616X6161".makeBytes()
-            ).string,
+            ).makeString(),
             "aa"
         )
     }
