@@ -1,5 +1,3 @@
-import Foundation
-
 extension Sequence where Iterator.Element == Byte {
     public var base64Encoded: Bytes {
         let bytes = Array(self)

@@ -153,4 +153,10 @@ class ByteTests: XCTestCase {
             "aa"
         )
     }
+    
+    public func testBase64URLDecodeJWT() {
+        let jwt = "Aw_Ma0impeGEaCQn6AramTZ6hXeW0bJm_3dKbiXtJDOBhs1Zm6IgX-uJhuzW0SY2evWL4D2ZX5I90ISAzEdabw".makeBytes()
+        let decoded = jwt.base64URLDecoded
+        XCTAssertEqual(decoded.count, 64)
+    }
 }

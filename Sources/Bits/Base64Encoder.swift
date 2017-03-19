@@ -26,10 +26,22 @@ public final class Base64Encoder {
                 return nil
             }
         }
-
+        
+        let decodeMap: Base64Encoder.ByteMap = { byte in
+            switch byte {
+            case Byte.hyphen:
+                return 62
+            case Byte.underscore:
+                return 63
+            default:
+                return nil
+            }
+        }
+        
         return Base64Encoder(
             padding: nil,
-            encodeMap: encodeMap
+            encodeMap: encodeMap,
+            decodeMap: decodeMap
         )
     }
 
