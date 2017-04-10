@@ -1,29 +1,8 @@
 extension Sequence where Iterator.Element == Byte {
-    /**
-        Converts a slice of bytes to
-        string. Courtesy of Socks by @czechboy0
-    */
-    @available(*, deprecated: 0.2, renamed: "makeString()")
-    public var string: String {
-        return makeString()
-    }
-
     /// Converts a slice of bytes to
-    /// string. Courtesy of Socks by @czechboy0
+    /// string. Courtesy of @vzsg
     public func makeString() -> String {
-        var utf = UTF8()
-        var gen = makeIterator()
-        var str = String()
-        while true {
-            switch utf.decode(&gen) {
-            case .emptyInput:
-                return str
-            case .error:
-                break
-            case .scalarValue(let unicodeScalar):
-                str.append(String(unicodeScalar))
-            }
-        }
+        return String(bytes: self, encoding: .utf8) ?? ""
     }
 
     /**
