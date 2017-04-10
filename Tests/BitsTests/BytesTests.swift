@@ -96,7 +96,7 @@ class BytesTests: XCTestCase {
     }
     
     func testStringPerformance() {
-        let bytes = Bytes(repeating: 65, count: 4_194_304)
+        let bytes = Bytes(repeating: 65, count: 65_536)
         measure {
             _ = bytes.makeString()
         }

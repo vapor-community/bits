@@ -2,7 +2,20 @@ extension Sequence where Iterator.Element == Byte {
     /// Converts a slice of bytes to
     /// string. Courtesy of @vzsg
     public func makeString() -> String {
-        return String(bytes: self, encoding: .utf8) ?? ""
+        var utf = UTF8()
+        var gen = makeIterator()
+        var str = String()
+        str.reserveCapacity(underestimatedCount)
+        while true {
+            switch utf.decode(&gen) {
+            case .emptyInput:
+                return str
+            case .error:
+                break
+            case .scalarValue(let unicodeScalar):
+                str.append(String(unicodeScalar))
+            }
+        }
     }
 
     /**
