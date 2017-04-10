@@ -94,4 +94,11 @@ class BytesTests: XCTestCase {
         let data = Data(bytes: bytes)
         XCTAssertEqual(data.makeBytes(), bytes)
     }
+    
+    func testStringPerformance() {
+        let bytes = Bytes(repeating: 65, count: 65_536)
+        measure {
+            _ = bytes.makeString()
+        }
+    }
 }
