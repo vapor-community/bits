@@ -38,7 +38,11 @@ extension UnsignedInteger {
         var bytes: [Byte] = []
         (1...size).forEach { _ in
             let next = copy & byteMask
-            let byte = Byte(UInt64(next))
+            #if swift(>=4)
+                let byte = Byte(UInt64(next))
+            #else
+                let byte = Byte(next.toUIntMax())
+            #endif
             bytes.insert(byte, at: 0)
             copy.shiftRight(8)
         }
