@@ -91,14 +91,18 @@ extension Byte {
 
     /// }
     public static let rightCurlyBracket: Byte = 0x7D
+
+    /// <
+    public static let lessThan: Byte = 0x3C
+
+    /// >
+    public static let greaterThan: Byte = 0x3E
 }
 
 extension Byte {
-    /**
-         Defines the `crlf` used to denote
-         line breaks in HTTP and many other
-         formatters
-    */
+    /// Defines the `crlf` used to denote
+    /// line breaks in HTTP and many other
+    ///  formatters
     public static let crlf: Bytes = [
         .carriageReturn,
         .newLine

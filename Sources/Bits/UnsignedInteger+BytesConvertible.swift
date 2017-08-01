@@ -14,10 +14,10 @@ extension UnsignedInteger {
     public init(bytes: Bytes) {
         // 8 bytes in UInt64, etc. clips overflow
         let prefix = bytes.suffix(MemoryLayout<Self>.size)
-        var value: UIntMax = 0
+        var value: UInt64 = 0
         prefix.forEach { byte in
             value <<= 8 // 1 byte is 8 bits
-            value |= byte.toUIntMax()
+            value |= UInt64(byte)
         }
 
         self.init(value)
@@ -38,7 +38,11 @@ extension UnsignedInteger {
         var bytes: [Byte] = []
         (1...size).forEach { _ in
             let next = copy & byteMask
-            let byte = Byte(next.toUIntMax())
+            #if swift(>=4)
+                let byte = Byte(UInt64(next))
+            #else
+                let byte = Byte(next.toUIntMax())
+            #endif
             bytes.insert(byte, at: 0)
             copy.shiftRight(8)
         }
