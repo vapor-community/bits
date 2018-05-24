@@ -45,9 +45,15 @@ class ByteTests: XCTestCase {
         XCTAssertEqual("f".makeBytes().first?.isDigit, false)
 
         // hex digits
+        #if swift(>=4.0)
+        for character in "0123456789abcdefABCDEF" {
+            XCTAssertEqual(String(character).makeBytes().first?.isHexDigit, true)
+        }
+        #else
         for character in "0123456789abcdefABCDEF".characters {
             XCTAssertEqual(String(character).makeBytes().first?.isHexDigit, true)
         }
+        #endif
         XCTAssertEqual("g".makeBytes().first?.isHexDigit, false)
     }
 
